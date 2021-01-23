@@ -1,4 +1,4 @@
-from ffWarAdminApi.models import GameModel
+from ffWarAdminApi.models import GameModel,ResultModel
 from ffWarUserApi.models import JoinGameModel,Wallet
 from rest_framework import  permissions,decorators
 from ffWarAdminApi.serializers import GameSerializers
@@ -23,13 +23,6 @@ class ActiveGameView(APIView):
             i += 1
 
         return Response(serializer.data)
-
-
-
-
-
-
-
 
 @decorators.permission_classes([permissions.AllowAny])
 class OngoingGameView(APIView):
@@ -106,6 +99,29 @@ class JoinGameView(APIView):
 
 
         return Response("Low Balance",status=status.HTTP_400_BAD_REQUEST)
+@decorators.permission_classes([permissions.AllowAny])
+class CompletedGameView(APIView):
+    def get(self, request):
+        active_games = GameModel.objects.filter(status='complete')
+        serializer = GameSerializers(active_games, many=True)
+        i = 0;
+        for data in serializer.data:
+            join_spot = JoinGameModel.objects.filter(game_id=data["id"]).count()
+            res = {'join_spot': join_spot}
+
+            serializer.data[i].update(res)
+            i += 1
+
+        return Response(serializer.data)
+
+@decorators.permission_classes([permissions.AllowAny])
+class FetchResultView(APIView):
+    def post(self,request):
+
+        result = ResultModel.objects.filter(game_id=request.data["game_id"])
+        serializer=joinGameSerializer(result,many=True)
+        return Response(serializer.data)
+
 
 
 

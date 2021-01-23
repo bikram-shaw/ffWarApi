@@ -36,6 +36,7 @@ class RoomDetailsViewSet(viewsets.ModelViewSet):
 
 
         return Response("Insert Success",status=status.HTTP_201_CREATED)
+
 @decorators.permission_classes([permissions.AllowAny])
 class FetchJoinPlayerView(APIView):
     def post(self,request):
@@ -69,4 +70,12 @@ class ResultView(APIView):
 
 
         return Response(status=status.HTTP_201_CREATED)
-
+class FetchRoomDetails(APIView):
+    def post(self,request):
+        game_id=request.data["game_id"]
+        isPlayerJoin=JoinGameModel.objects.filter(game_id=game_id,user=request.user).count()
+        if isPlayerJoin!=0:
+            roomDetails=RoomDetailsModel.objects.get(game_id=game_id)
+            roomSerializer=RoomDetailsSerializers(roomDetails,many=False)
+            return Response(roomSerializer.data,status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_400_BAD_REQUEST)

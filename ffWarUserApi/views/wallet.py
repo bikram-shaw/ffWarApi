@@ -41,7 +41,7 @@ class WithdrawViewset(APIView):
                 withdraw=serializer.save()
                 withdraw.user=request.user
                 withdraw.save()
-                txn = TransactionSerializer(data={"txn_status": "pending", "txn_description": "withdraw",
+                txn = TransactionSerializer(data={"txn_status": "debit", "txn_description": "withdraw",
                                                   "txn_amount":request.data['wth_amount']})
                 if txn.is_valid():
 

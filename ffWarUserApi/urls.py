@@ -29,6 +29,8 @@ urlpatterns = [
     path('login',views.userSignIn),
     path('active-game',views.ActiveGameView.as_view()),
     path('ongoing-game', views.OngoingGameView.as_view()),
+    path('completed-game', views.CompletedGameView.as_view()),
+    path('result', views.FetchResultView.as_view()),
     path('fetchJoinPlayer',views.FetchJoinPlayerView.as_view()),
     path('joinGame', views.JoinGameView.as_view()),
     path('GetUserTransaction', views.GetUserTransaction.as_view()),

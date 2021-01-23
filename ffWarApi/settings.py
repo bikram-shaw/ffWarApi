@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -84,8 +85,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'ff_war_db',
-        'USER':'root',
-        'PASSWORD':''
+        'USER':'bikram',
+        'PASSWORD':'8293253017',
+        'HOST': 'ffwardb.c09pqswrmjz0.ap-south-1.rds.amazonaws.com',
+        'PORT': '3306'
     }
 }
 AUTH_USER_MODEL= "ffWarUserApi.User"
@@ -134,7 +137,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 50,

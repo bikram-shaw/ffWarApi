@@ -11,5 +11,8 @@ urlpatterns = [
 
     path('',include(router.urls)),
     path('fetch-join-player',views.FetchJoinPlayerView.as_view()),
-    path('result',views.ResultView.as_view())
+    path('result',views.ResultView.as_view()),
+    path('refund',views.RefundView.as_view()),
+    path('user-txn',views.UserTxnHistory.as_view()),
+    path('fetchRoomDetails', views.FetchRoomDetails.as_view())
 ]
