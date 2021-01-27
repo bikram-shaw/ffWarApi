@@ -9,9 +9,7 @@ def GenerateChecksum(mid,oid):
     paytmChecksum = PaytmChecksum.generateSignature(paytmParams, "E%mbk4m&7y6QOXvE")
     return str(paytmChecksum)
 
-def VarifyChecksum(mid,oid,paytmChecksum):
-    paytmParams["MID"] = mid
-    paytmParams["ORDERID"] = oid
+def VarifyChecksum(paytmChecksum):
     verifyChecksum = PaytmChecksum.verifySignature(paytmParams, "E%mbk4m&7y6QOXvE",paytmChecksum)
     return str(verifyChecksum)
 
