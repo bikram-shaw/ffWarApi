@@ -9,4 +9,7 @@ class ChecksumView(APIView):
        
         
         return Response(checksum1)
-
+@decorators.permission_classes([permissions.AllowAny])
+class callback(APIView):
+    def post(self,request):
+        return Response(request.data)
