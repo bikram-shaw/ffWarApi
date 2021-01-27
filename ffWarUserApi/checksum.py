@@ -4,8 +4,8 @@ from paytmchecksum import PaytmChecksum
 # initialize an Hash/Array
 paytmParams = {}
 def GenerateChecksum(mid,oid):
-    paytmParams["MID"] = mid
-    paytmParams["ORDERID"] = oid
+    paytmParams["MID"]=mid
+    paytmParams["ORDERID"]=oid
     paytmChecksum = PaytmChecksum.generateSignature(paytmParams, "E%mbk4m&7y6QOXvE")
     return str(paytmChecksum)
 
