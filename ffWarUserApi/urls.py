@@ -36,7 +36,8 @@ urlpatterns = [
     path('GetUserTransaction', views.GetUserTransaction.as_view()),
     path('PostUserTransaction', views.PostUserTransaction.as_view()),
     path('withdraw', views.WithdrawViewset.as_view()),
-    path('wallet',views.WalletViewset.as_view())
+    path('wallet',views.WalletViewset.as_view()),
+    path('checksum', views.ChecksumView.as_view())
 
 
 
