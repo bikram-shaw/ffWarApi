@@ -13,7 +13,7 @@ def GenerateChecksum(oid):
     "orderId"       : oid,
     "callbackUrl"   : "https://securegw.paytm.in/theia/paytmCallback?ORDER_ID="+oid,
     "userInfo"      : {
-        "custId"    : "CUST_001",
+        "custId"    : "0154214",
     },
     }
     paytmChecksum = PaytmChecksum.generateSignature(json.dumps(paytmParams["body"]), "E%mbk4m&7y6QOXvE")
