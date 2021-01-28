@@ -7,7 +7,10 @@ import random
 class ChecksumView(APIView):
     def post(self,request):
         oid=str(random.random())
-        checksum1=checksum.GenerateChecksum("eVExLv25221231925149", oid)
+        
+
+       
+        checksum1=checksum.GenerateChecksum(oid)
        
         res={"oid":oid,"checksum":checksum1}
         return Response(res)

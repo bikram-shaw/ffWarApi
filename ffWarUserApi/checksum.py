@@ -1,17 +1,32 @@
 from paytmchecksum import PaytmChecksum
-
+import json
 # Generate Checksum via Hash/Array
 # initialize an Hash/Array
-paytmParams = {}
-def GenerateChecksum(mid,oid):
-    paytmParams["MID"]='eVExLv25221231925149'
-    paytmParams["ORDERID"]=oid
-    paytmChecksum = PaytmChecksum.generateSignature(paytmParams, "E%mbk4m&7y6QOXvE")
+
+def GenerateChecksum(oid):
+    paytmParams = dict()
+        
+    paytmParams["body"] = {
+    "requestType"   : "Payment",
+    "mid"           : "eVExLv25221231925149",
+    "websiteName"   : "DEFAULT",
+    "orderId"       : oid,
+    "callbackUrl"   : "https://securegw.paytm.in/theia/paytmCallback?ORDER_ID="+oid,
+    "txnAmount"     : {
+        "value"     : "20.00",
+        "currency"  : "INR",
+    },
+    "userInfo"      : {
+        "custId"    : "CUST_001",
+    },
+    }
+    paytmChecksum = PaytmChecksum.generateSignature(json.dumps(paytmParams["body"]), "E%mbk4m&7y6QOXvE")
     return str(paytmChecksum)
 
 def VarifyChecksum(paytmChecksum):
-    verifyChecksum = PaytmChecksum.verifySignature(paytmParams, "E%mbk4m&7y6QOXvE",paytmChecksum)
-    return str(verifyChecksum)
+    #verifyChecksum = PaytmChecksum.verifySignature(paytmParams, "E%mbk4m&7y6QOXvE",paytmChecksum)
+    #return str(verifyChecksum)
+    pass
 
 
 
