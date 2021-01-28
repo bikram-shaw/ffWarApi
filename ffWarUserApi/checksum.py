@@ -17,9 +17,9 @@ def GenerateChecksum(oid):
 
     },
     }
-    paytmChecksum = PaytmChecksum.generateSignature(json.dumps(paytmParams["body"]), "E%mbk4m&7y6QOXvE")
+    checksum = PaytmChecksum.generateSignature(json.dumps(paytmParams["body"]), "E%mbk4m&7y6QOXvE")
 
-    return str(paytmChecksum)
+    return str(checksum)
 
 def VarifyChecksum(paytmChecksum):
     #verifyChecksum = PaytmChecksum.verifySignature(paytmParams, "E%mbk4m&7y6QOXvE",paytmChecksum)

@@ -18,6 +18,8 @@ class ChecksumView(APIView):
 @decorators.permission_classes([permissions.AllowAny])
 class callback(APIView):
     def post(self,request):
+        print(request.data["checksum"])
+        print(request.data["oid"])
         paytmParams = dict()
         paytmParams["head"] = {
             "signature": request.data["checksum"]
