@@ -6,9 +6,10 @@ import random
 @decorators.permission_classes([permissions.AllowAny])
 class ChecksumView(APIView):
     def post(self,request):
-        checksum1=checksum.GenerateChecksum(request.data["mid"],request.data["orderid"])
+        oid=random.random()
+        checksum1=checksum.GenerateChecksum("eVExLv25221231925149",oid)
        
-        res={"oid":random.random(),"checksum":checksum1}
+        res={"oid":oid,"checksum":checksum1}
         return Response(res)
 @decorators.permission_classes([permissions.AllowAny])
 class callback(APIView):
