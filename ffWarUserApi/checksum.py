@@ -12,15 +12,12 @@ def GenerateChecksum(oid):
     "websiteName"   : "DEFAULT",
     "orderId"       : oid,
     "callbackUrl"   : "https://securegw.paytm.in/theia/paytmCallback?ORDER_ID="+oid,
-    "txnAmount"     : {
-        "value"     : "20.00",
-        "currency"  : "INR",
-    },
     "userInfo"      : {
         "custId"    : "CUST_001",
     },
     }
     paytmChecksum = PaytmChecksum.generateSignature(json.dumps(paytmParams["body"]), "E%mbk4m&7y6QOXvE")
+
     return str(paytmChecksum)
 
 def VarifyChecksum(paytmChecksum):
