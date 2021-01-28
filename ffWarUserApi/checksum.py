@@ -7,13 +7,14 @@ def GenerateChecksum(oid):
     paytmParams = dict()
         
     paytmParams["body"] = {
-    "requestType"   : "Payment",
-    "mid"           : "eVExLv25221231925149",
-    "websiteName"   : "DEFAULT",
-    "orderId"       : oid,
-    "callbackUrl"   : "https://securegw.paytm.in/theia/paytmCallback?ORDER_ID="+oid,
-    "userInfo"      : {
-        "custId"    : "0154214",
+       "requestType": "Payment",
+       "mid": "eVExLv25221231925149",
+       "websiteName": "DEFAULT",
+       "orderId": oid,
+       "callbackUrl": "https://securegw.paytm.in/theia/paytmCallback?ORDER_ID="+oid,
+       "userInfo": {
+           "custId": "0154214"
+
     },
     }
     paytmChecksum = PaytmChecksum.generateSignature(json.dumps(paytmParams["body"]), "E%mbk4m&7y6QOXvE")
