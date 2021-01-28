@@ -4,10 +4,11 @@ from rest_framework.response import Response
 from ffWarUserApi import checksum
 import random,json
 import requests
+import uuid
 @decorators.permission_classes([permissions.AllowAny])
 class ChecksumView(APIView):
     def post(self,request):
-        oid=str(random.random())
+        oid=str(uuid.uuid4())
         
 
        
