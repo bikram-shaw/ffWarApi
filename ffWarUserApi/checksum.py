@@ -11,7 +11,7 @@ def GenerateChecksum(oid):
        "mid": "eVExLv25221231925149",
        "websiteName": "WEBSTAGING",
        "orderId": oid,
-       "callbackUrl": "https://securegw.paytm.in/theia/paytmCallback?ORDER_ID="+oid,
+       "callbackUrl": "https://merchant.com/callback",
        "userInfo": {
            "custId": "0154214"
 
