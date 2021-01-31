@@ -9,9 +9,13 @@ def GenerateChecksum(oid):
     paytmParams["body"] = {
        "requestType": "Payment",
        "mid": "eVExLv25221231925149",
-       "websiteName": "WEBSTAGING",
+       "websiteName": "DEFAULT",
        "orderId": oid,
        "callbackUrl": "https://merchant.com/callback",
+        "txnAmount": {
+            "value": "10.00",
+            "currency": "INR",
+        },
        "userInfo": {
            "custId": "0154214"
 
