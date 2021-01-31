@@ -2,14 +2,14 @@ from paytmchecksum import PaytmChecksum
 import json
 # Generate Checksum via Hash/Array
 # initialize an Hash/Array
-
+paytmParams = dict()
 def GenerateChecksum(oid):
-    paytmParams = dict()
+
         
     paytmParams["body"] = {
        "requestType": "Payment",
        "mid": "eVExLv25221231925149",
-       "websiteName": "DEFAULT",
+       "websiteName": "WEBSTAGING",
        "orderId": oid,
        "callbackUrl": "https://securegw.paytm.in/theia/paytmCallback?ORDER_ID="+oid,
        "userInfo": {
