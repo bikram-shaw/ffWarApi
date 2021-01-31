@@ -11,11 +11,8 @@ def GenerateChecksum(oid):
        "mid": "eVExLv25221231925149",
        "websiteName": "DEFAULT",
        "orderId": oid,
-       "callbackUrl": "https://merchant.com/callback",
-        "txnAmount": {
-            "value": "10.00",
-            "currency": "INR",
-        },
+       #"callbackUrl": "https://merchant.com/callback",
+
        "userInfo": {
            "custId": "0154214"
 
